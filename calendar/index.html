@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Event Calendar</h1>
+        <div class="calendar-controls">
+            <button onclick="prevMonth()">Previous</button>
+            <span id="current-month"></span>
+            <button onclick="nextMonth()">Next</button>
+        </div>
+        <div id="calendar"></div>
+        <div class="event-form">
+            <input type="text" id="event-title" placeholder="Event Title">
+            <input type="date" id="event-date">
+            <button onclick="addEvent()">Add Event</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-date"></h2>
+            <div id="modal-events"></div>
+        </div>
+    </div>    
+
+    <script src="script.js"></script>
+</body>
+</html>

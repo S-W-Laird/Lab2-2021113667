@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web UI Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <div class="icon" onclick="showContent('home')">
+                <img src="img/home.png">
+                <span class="icon-text">Home</span>
+            </div>
+            <div class="icon" onclick="showContent('calendar')">
+                <img src="img/calender.png">
+                <span class="icon-text">Calendar</span>
+            </div>
+            <div class="icon" onclick="showContent('search')">
+                <img src="img/search.png">
+                <span class="icon-text">Search</span>
+            </div>
+            <div class="icon" onclick="showContent('todoList')">
+                <img src="img/ToDo-List.png">
+                <span class="icon-text">ToDo-List</span>
+            </div>
+            <div class="icon" onclick="showContent('meeting')">
+                <img src="img/meeting.png">
+                <span class="icon-text">Meeting</span>
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="home" class="content-section">
+                <h2>Dashboard</h2>
+                <p>Welcome to the dashboard.</p>
+            </div>
+            <div id="calendar" class="content-section" style="display:none;">
+                <h2>Calendar</h2>
+                <p>Here is the calendar page.</p>
+            </div>
+            <div id="search" class="content-section" style="display:none;">
+                <h2>Search</h2>
+                <p>Here is the search page.</p>
+            </div>
+            <div id="todoList" class="content-section" style="display:none;">
+                <h2>To-Do List</h2>
+                <p style="color: #777;">“合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。”  ——《老子》</p>
+                <div class="todo-input">
+                    <input type="text" id="todo-input" placeholder="Add a new task...">
+                    <div class="date-and-button">
+                        <input type="date" id="todo-ddl">
+                        <button onclick="addTodo()">Add</button>
+                    </div>
+                </div>
+                <div id="todo-list" class="todo-list">
+                    <!-- To-Do items will appear here -->
+                </div>
+            </div>
+            <div id="meeting" class="content-section" style="display:none;">
+                <h2>meeting</h2>
+                <p>Here is the meeting page.</p>
+            </div>
+        </div>
+        <div class="chat-box">
+            <h2>Chat With ChatGPT</h2>
+            <div id="chat-interface">
+                <div class="chat-messages">
+                    <!-- Chat messages will appear here -->
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Type a message...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

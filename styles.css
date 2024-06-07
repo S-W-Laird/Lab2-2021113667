@@ -1,0 +1,227 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #c6e6e8;
+    color: #42525e;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    background-color: #202a2d;
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position: relative;
+    transition: width 0.3s;
+}
+
+.sidebar.expanded {
+    width: 200px;
+}
+
+.icon {
+    position: relative;
+    margin: 20px 0;
+    cursor: pointer;
+    text-align: left;
+    align-self: flex-start;
+    padding-left: 24px;
+    transition: background-color 0.3s;
+}
+
+.icon img {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.icon span {
+    display: none;
+    margin-top: 5px;
+    color: #ddd;
+}
+
+.sidebar.expanded .icon span {
+    display: block;
+}
+
+.icon:hover img {
+    transform: scale(1.2); /* 鼠标悬停时放大图标 */
+}
+
+.icon-text {
+    position: absolute;
+    left: calc(100% + 20px);
+    top: 40%; /* 让文字垂直居中 */
+    transform: translateY(-50%); /* 通过 translateY 将文字垂直居中 */
+    font-size: 18px; /* 调整文字大小 */
+    color: #dedede;
+    width: 100px;
+}
+
+.main-content {
+    width: 60%;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.content-section {
+    display: none;
+}
+
+.chat-box {
+    width: 30%;
+    background-color: #a9d6da;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.chat-box h2 {
+    margin: 0 0 20px 0;
+}
+
+#chat-interface {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-input {
+    display: flex;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 15px 0 0 15px;
+}
+
+.chat-input button {
+    padding: 10px 15px 10px 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 0 15px 15px 0;
+}
+
+.chat-input button:hover {
+    background-color: #45a049;
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px;
+    margin: 5px 10px;
+    border-radius: 10px;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.message.user {
+    align-self: flex-end;
+    background-color: #4CAF50;
+    color: whitesmoke;
+    border-radius: 10px 10px 0 10px;
+}
+
+.message.bot {
+    align-self: flex-start;
+    background-color: white;
+    color: #555;
+    border-radius: 10px 10px 10px 0;
+}
+
+/* To-Do List Styles */
+.todo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.date-and-button {
+    display: flex;
+    gap: 10px;
+}
+
+.date-and-button input[type="date"] {
+    flex-grow: 3; /* 修改这一行 */
+}
+
+.date-and-button button {
+    flex-grow: 1; /* 修改这一行 */
+}
+
+.todo-input input, .todo-input button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.todo-input button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.todo-input button:hover {
+    background-color: #218838;
+}
+
+.todo-list {
+    margin-top: 20px;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    /* border: 1px solid #555; */
+    background-color: #FCFCD4;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.todo-item span {
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.todo-ddl {
+    margin-right: 10px;
+    color: #888;
+}
+
+.todo-item button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.todo-item button:hover {
+    background-color: #c82333;
+}
