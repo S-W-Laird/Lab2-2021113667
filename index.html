@@ -3,65 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web UI Interface</title>
+    <title>IntelliWorkspace</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="img/logo.png">
 </head>
 <body>
     <div class="container">
+        <!-- first part -->
         <div class="sidebar" id="sidebar">
-            <div class="icon" onclick="showContent('home')">
-                <img src="img/home.png">
-                <span class="icon-text">Home</span>
+            <div class="sidebar-item" data-section="home" onclick="showContent('home')">
+                <div class="icon">
+                    <img src="img/home.png" alt="Home">
+                    <span class="icon-text">Home</span>
+                </div>
             </div>
-            <div class="icon" onclick="showContent('calendar')">
-                <img src="img/calender.png">
-                <span class="icon-text">Calendar</span>
+            <div class="sidebar-item" data-section="calendar" onclick="showContent('calendar')">
+                <div class="icon">
+                    <img src="img/calender.png" alt="Calendar">
+                    <span class="icon-text">Calendar</span>
+                </div>
             </div>
-            <div class="icon" onclick="showContent('search')">
-                <img src="img/search.png">
-                <span class="icon-text">Search</span>
+            <div class="sidebar-item" data-section="todoList" onclick="showContent('todoList')">
+                <div class="icon">
+                    <img src="img/ToDo-List.png" alt="ToDo-List">
+                    <span class="icon-text">ToDo-List</span>
+                </div>
             </div>
-            <div class="icon" onclick="showContent('todoList')">
-                <img src="img/ToDo-List.png">
-                <span class="icon-text">ToDo-List</span>
+            <div class="sidebar-item" data-section="search" onclick="showContent('search')">
+                <div class="icon">
+                    <img src="img/search.png" alt="Search">
+                    <span class="icon-text">Search</span>
+                </div>
             </div>
-            <div class="icon" onclick="showContent('meeting')">
-                <img src="img/meeting.png">
-                <span class="icon-text">Meeting</span>
+            <div class="sidebar-item" data-section="meeting" onclick="showContent('meeting')">
+                <div class="icon">
+                    <img src="img/meeting.png" alt="Meeting">
+                    <span class="icon-text">Meeting</span>
+                </div>
             </div>
-        </div>
+        </div>        
+
+        <!-- second part -->
         <div class="main-content">
+            <!-- home -->
             <div id="home" class="content-section">
-                <h2>Dashboard</h2>
-                <p>Welcome to the dashboard.</p>
+                <div class="container-bg">
+                    <h2>Dashboard</h2>
+                    <p>Welcome to the dashboard.</p>
+                </div>
             </div>
+
+            <!-- calendar -->
             <div id="calendar" class="content-section" style="display:none;">
-                <h2>Calendar</h2>
-                <p>Here is the calendar page.</p>
+                <div class="container-bg">
+                    <h1>Event Calendar</h1>
+                    <div class="calendar-controls">
+                        <button onclick="changeMonth(-1)">Previous</button>
+                        <span id="current-month"></span>
+                        <button onclick="changeMonth(1)">Next</button>
+                    </div>
+                    <div id="calendar-grid"></div>
+                    <div class="event-form">
+                        <input type="text" id="event-title" placeholder="Event Title">
+                        <input type="date" id="event-date">
+                        <button onclick="addEvent()">
+                            <img src="img/add.png" alt="Send" width="18" height="18">
+                        </button>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div id="modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <h2 id="modal-date"></h2>
+                        <div id="modal-events"></div>
+                    </div>
+                </div>
             </div>
+
+            <!-- todoList -->
+            <div id="todoList" class="content-section" style="display:none;">
+                <div class="container-bg">
+                    <h1>To-Do List</h1>
+                    <p style="color: #777; text-align: center;">“合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。”  ——《老子》</p>
+                    <div class="todo-input">
+                        <input type="text" id="todo-input" placeholder="Add a new task...">
+                        <div class="date-and-button">
+                            <input type="date" id="todo-ddl">
+                            <button onclick="addTodo()">
+                                <img src="img/add.png" alt="Send" width="18" height="18">
+                            </button>
+                        </div>
+                    </div>
+                    <div id="todo-list" class="todo-list">
+                        <!-- To-Do items will appear here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- search -->
             <div id="search" class="content-section" style="display:none;">
                 <h2>Search</h2>
                 <p>Here is the search page.</p>
             </div>
-            <div id="todoList" class="content-section" style="display:none;">
-                <h2>To-Do List</h2>
-                <p style="color: #777;">“合抱之木，生于毫末；九层之台，起于累土；千里之行，始于足下。”  ——《老子》</p>
-                <div class="todo-input">
-                    <input type="text" id="todo-input" placeholder="Add a new task...">
-                    <div class="date-and-button">
-                        <input type="date" id="todo-ddl">
-                        <button onclick="addTodo()">Add</button>
+
+            <!-- Meeting Section -->
+            <div id="meeting" class="content-section" style="display:none;">
+                <div class="container-bg">
+                    <h1>Meetings</h1>
+                    <button onclick="readClipboard()">Read Clipboard</button>
+                    <button onclick="showAddMeetingModal()">Add Meeting</button>
+                    <div class="meeting-columns">
+                        <div class="column">
+                            <h2>Upcoming Meetings</h2>
+                            <div id="upcoming-meetings" class="meeting-list">
+                                <!-- Upcoming meeting items will appear here -->
+                            </div>
+                        </div>
+                        <div class="column">
+                            <h2>Past Meetings</h2>
+                            <div id="past-meetings" class="meeting-list">
+                                <!-- Past meeting items will appear here -->
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div id="todo-list" class="todo-list">
-                    <!-- To-Do items will appear here -->
+            </div>
+            
+            <!-- Confirmation Modal -->
+            <div id="confirmation-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeMeetingModal()">&times;</span>
+                    <h2>Confirm Meeting Information</h2>
+                    <label for="modal-date">Date and Time:</label>
+                    <input type="datetime-local" id="modal-date">
+                    <label for="modal-name">Meeting with:</label>
+                    <input type="text" id="modal-name">
+                    <label for="modal-id">Meeting ID:</label>
+                    <input type="text" id="modal-id">
+                    <button onclick="confirmMeeting()">Confirm</button>
                 </div>
             </div>
-            <div id="meeting" class="content-section" style="display:none;">
-                <h2>meeting</h2>
-                <p>Here is the meeting page.</p>
+
+            <!-- Add Meeting Modal -->
+            <div id="add-meeting-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="closeAddMeetingModal()">&times;</span>
+                    <h2>Add New Meeting</h2>
+                    <label for="add-modal-date">Date and Time:</label>
+                    <input type="datetime-local" id="add-modal-date">
+                    <label for="add-modal-name">Meeting with:</label>
+                    <input type="text" id="add-modal-name">
+                    <label for="add-modal-id">Meeting ID:</label>
+                    <input type="text" id="add-modal-id">
+                    <button onclick="addMeeting()">Add Meeting</button>
+                </div>
             </div>
+
         </div>
+
+        <!-- third part -->
         <div class="chat-box">
             <h2>Chat With ChatGPT</h2>
             <div id="chat-interface">
@@ -70,7 +171,10 @@
                 </div>
                 <div class="chat-input">
                     <input type="text" id="chat-input" placeholder="Type a message...">
-                    <button onclick="sendMessage()">Send</button>
+                    <button onclick="sendMessage()">
+                        <img src="img/send.png" alt="Send" width="18" height="18">
+                    </button>
+                    
                 </div>
             </div>
         </div>

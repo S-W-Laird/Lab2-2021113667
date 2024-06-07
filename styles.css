@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #c6e6e8;
+    background-color: #FFFFF5;
     color: #42525e;
 }
 
@@ -11,12 +11,35 @@ body {
     height: 100vh;
 }
 
+.container-bg {
+    width: 100%;
+    max-width: 96%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+.container-bg button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.container-bg button:hover {
+    background-color: #111;
+}
+
 .sidebar {
-    background-color: #202a2d;
+    background-color: #222;
     width: 80px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     padding-top: 20px;
     position: relative;
     transition: width 0.3s;
@@ -26,6 +49,24 @@ body {
     width: 200px;
 }
 
+.sidebar-item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    transition: width 0.3s;
+}
+
+.sidebar-item.active {
+    background-color: #555;
+    width: 100%;
+}
+
+.sidebar-item:hover {
+    background-color: #777;
+    width: 100%;
+    box-shadow: inset 0 0 9px rgba(32, 42, 45, 0.1); /* 添加内阴影 */
+}
+
 .icon {
     position: relative;
     margin: 20px 0;
@@ -33,7 +74,6 @@ body {
     text-align: left;
     align-self: flex-start;
     padding-left: 24px;
-    transition: background-color 0.3s;
 }
 
 .icon img {
@@ -67,7 +107,7 @@ body {
 }
 
 .main-content {
-    width: 60%;
+    width: 70%;
     padding: 20px;
     overflow-y: auto;
 }
@@ -76,13 +116,33 @@ body {
     display: none;
 }
 
+
+.view-button {
+    right: 40px; /* 向左移动 */
+    transition: transform 0.3s ease-in-out; /* 添加过渡效果 */
+}
+
+.view-button:hover {
+    transform: scale(1.2); /* 鼠标悬浮时放大 */
+}
+
+.done-button {
+    right: 10px; /* 保持原位 */
+    transition: transform 0.3s ease-in-out; /* 添加过渡效果 */
+}
+
+.done-button:hover {
+    transform: scale(1.2); /* 鼠标悬浮时放大 */
+}
+
 .chat-box {
     width: 30%;
-    background-color: #a9d6da;
+    background-color: #fafade;
     padding: 20px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(30, 49, 50, 0.3); /* 添加内阴影 */
 }
 
 .chat-box h2 {
@@ -117,14 +177,14 @@ body {
 .chat-input button {
     padding: 10px 15px 10px 10px;
     border: none;
-    background-color: #4CAF50;
+    background-color: #444;
     color: white;
     cursor: pointer;
     border-radius: 0 15px 15px 0;
 }
 
 .chat-input button:hover {
-    background-color: #45a049;
+    background-color: #111;
 }
 
 .message {
@@ -138,7 +198,7 @@ body {
 
 .message.user {
     align-self: flex-end;
-    background-color: #4CAF50;
+    background-color: #444;
     color: whitesmoke;
     border-radius: 10px 10px 0 10px;
 }
@@ -146,7 +206,7 @@ body {
 .message.bot {
     align-self: flex-start;
     background-color: white;
-    color: #555;
+    color: #444;
     border-radius: 10px 10px 10px 0;
 }
 
@@ -164,11 +224,11 @@ body {
 }
 
 .date-and-button input[type="date"] {
-    flex-grow: 3; /* 修改这一行 */
+    flex-grow: 4; 
 }
 
 .date-and-button button {
-    flex-grow: 1; /* 修改这一行 */
+    flex-grow: 1;
 }
 
 .todo-input input, .todo-input button {
@@ -178,14 +238,14 @@ body {
 }
 
 .todo-input button {
-    background-color: #28a745;
+    background-color: #444;
     color: white;
     border: none;
     cursor: pointer;
 }
 
 .todo-input button:hover {
-    background-color: #218838;
+    background-color: #111;
 }
 
 .todo-list {
@@ -196,9 +256,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    /* border: 1px solid #555; */
-    background-color: #FCFCD4;
+    padding: 10px 30px 10px 20px;
+    background-color: #faf7de;
     border-radius: 4px;
     margin-bottom: 10px;
 }
@@ -209,12 +268,12 @@ body {
 }
 
 .todo-ddl {
-    margin-right: 10px;
+    margin-right: 30px;
     color: #888;
 }
 
 .todo-item button {
-    background-color: #dc3545;
+    background-color: #f25a47;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -224,4 +283,229 @@ body {
 
 .todo-item button:hover {
     background-color: #c82333;
+}
+
+/* calendar */
+
+h1 {
+    text-align: center;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.calendar-controls button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.calendar-controls button:hover {
+    background-color: #111;
+}
+
+#calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.calendar-header {
+    text-align: center;
+    font-weight: bold;
+}
+
+.calendar-day {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    font-size: 15px;
+    height: 92px;
+    overflow: hidden;
+}
+
+.event {
+    background-color: #faf7de;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    margin: 5px 0 0 0;
+}
+
+.event-form {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.event-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    /* border-radius: 8px; */
+    width: 48%;
+}
+
+.event-form button {
+    padding: 10px;
+    border: none;
+    background-color: #444;
+    color: white;
+    border-radius: 0% 30% 30% 0;
+    cursor: pointer;
+}
+
+.event-form button:hover {
+    background-color: #111;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.modal label {
+    display: block;
+    margin-top: 10px;
+}
+
+.modal input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.event button {
+    background-color: #f25a47;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.event button:hover {
+    background-color: #f25a47;
+}
+
+/* meeting */
+.meeting-columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+.column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.column:last-child {
+    margin-right: 0;
+}
+
+.meeting-list {
+    margin-top: 20px;
+}
+
+.meeting-card {
+    position: relative;
+    padding: 20px 20px 20px 50px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.meeting-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.meeting-time {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.meeting-info {
+    font-size: 1em;
+}
+
+.meeting-id {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.meeting-card img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #444;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    display: block; /* 使按钮成为块级元素 */
+    margin: 20px auto 0; /* 添加上边距并居中 */
+}
+
+.modal-content button:hover {
+    background-color: #111;
 }
